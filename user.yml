@@ -1,0 +1,9 @@
+- name: roboshop project - user
+  hosts: all
+  become: true
+  vars :
+    component : user
+  tasks:
+
+    - name : nodejs
+      ansible.builtin.import_tasks : nodejs.yml
