@@ -9,7 +9,7 @@
 
     - name : install mongobd
       ansible.builtin.yum :
-        name : mongobd_org
+        name : mongobd-org
         state : installed
 
     - name : replace ip address
