@@ -27,7 +27,7 @@
     - name : create new directory
       ansible.builtin.file:
         path: /app
-        state: present
+        state: directory
 
     - name : unarchive file
       ansible.builtin.unarchive :
