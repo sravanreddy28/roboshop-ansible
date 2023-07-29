@@ -3,7 +3,7 @@
   become: true
   tasks:
     - name : download repo
-      ansible.builtin.copy :
+      ansible.builtin.yum :
         src : https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
         dest : /etc/yum.repos.d/redis.repo
 
