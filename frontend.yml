@@ -20,7 +20,7 @@
     - name: create app directory
       ansible.builtin.file:
         path: /usr/share/nginx/html
-        state: absent
+        state: directory
 
     - name: download and extract application context
       ansible.builtin.unarchive:
