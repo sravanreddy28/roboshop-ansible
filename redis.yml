@@ -4,11 +4,11 @@
   tasks:
     - name : download repo
       ansible.builtin.yum :
-        name : https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
+        name : https://rpms.remirepo.net/enterprise/remi-release-8.rpm
         state : installed
 
     - name : enable redis
-      ansible.builtin.shell : yum module enable redis:remi-6.2 -y
+      ansible.builtin.shell : yum module enable redis:remi-6.2
 
     - name : install redis
       ansible.builtin.yum :
