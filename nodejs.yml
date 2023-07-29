@@ -51,7 +51,7 @@
 
 - name : start {{component}}
   ansible.builtin.systemd :
-    name : {{component}}
+    name : "{{component}}"
     state : restarted
     enabled : yes
     daemon-reload : yes
