@@ -49,9 +49,9 @@
 - name : load schema
   ansible.builtin.shell :  mongo --host mongodb-dev.sdevops28.online </app/schema/{{component}}.js
 
-- name : start catalogue
+- name : start {{component}}
   ansible.builtin.systemd :
-    name : catalogue
+    name : {{component}}
     state : restarted
     enabled : yes
     daemon-reload : yes
