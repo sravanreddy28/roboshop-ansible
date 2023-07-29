@@ -37,6 +37,8 @@
 
     - name :  install depedencies
       ansible.builtin.shell : npm install
+      args :
+        chdir : /app
 
     - name : start cart
       ansible.builtin.systemd :
