@@ -1,26 +1,30 @@
-- name : vendor repo
-  ansible.yum.shell : https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
+- name: roboshop project - rabbitmq
+  hosts: all
+  become: true
+  tasks:
+    - name: vendor repo
+      ansible.yum.shell: https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
 
-- name : rabbit mq repo
-  ansible.yum.shell : https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
+    - name: rabbit mq repo
+      ansible.yum.shell: https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
 
-- name : install rabbitmq-server
-  ansible.builtin.yum :
-    name : rabbitmq server
-    state : installed
+    - name: install rabbitmq-server
+      ansible.builtin.yum:
+        name: rabbitmq server
+        state: installed
 
-- name : start server
-  ansible.builtin.systemd :
-    name : rabbitmq-server
-    state : restarted
-    enabled : yes
+    - name: start server
+      ansible.builtin.systemd:
+        name: rabbitmq-server
+        state: restarted
+        enabled: yes
 
-- name : add user
-  ansible.builtin.rabbitmq_user :
-    name : roboshop
-    password : roboshop123
-    vhost : /
-    configure_priv : .*
-    read_priv : .*
-    write_priv : .*
-    state : present
+    - name: add user
+      ansible.builtin.rabbitmq_user:
+        name: roboshop
+        password: roboshop123
+        vhost: /
+        configure_priv: .*
+        read_priv: .*
+        write_priv: .*
+        state: present
