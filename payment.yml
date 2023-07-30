@@ -1,4 +1,4 @@
-- name: roboshop project - rabbitmq
+- name: roboshop project - payment
   hosts: all
   become: true
   tasks:
