@@ -1,4 +1,4 @@
-- name: roboshop project - frontend
+- name: roboshop project - shipping
   hosts: all
   become: true
   tasks:
@@ -34,6 +34,8 @@
 
     - name : download maven dependiences
       ansible.builtin.shell : mvn clean package ; mv target/shipping-1.0.jar shipping.jar
+      args :
+        chdir : /app
 
     - name : install mysql server
       ansible.builtin.yum :
