@@ -18,12 +18,12 @@
 
     - name: remove directory
       ansible.builtin.file:
-        name: /app
+        path: /app
         state: absent
 
     - name: create directory
       ansible.builtin.file:
-        name: /app
+        path: /app
         state: directory
 
     - name: unarchive file
