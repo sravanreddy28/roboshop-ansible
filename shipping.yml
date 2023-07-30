@@ -1,0 +1,50 @@
+- name: roboshop project - frontend
+  hosts: all
+  become: true
+  tasks:
+    - name: service file
+      ansible.builtin.copy:
+        src: shipping.service
+        dest: /etc/systemd/system/shipping.service
+
+    - name: install maven
+      ansible.builtin.yum:
+        name : maven
+        state : installed
+
+    - name : add user
+      ansible.builtin.user :
+        name : roboshop
+
+    - name: remove directory
+      ansible.builtin.file:
+        name: /app
+        state: absent
+
+    - name: create directory
+      ansible.builtin.file:
+        name: /app
+        state: directory
+
+    - name: unarchive file
+      ansible.builtin.unarchive:
+        src: https://roboshop-artifacts.s3.amazonaws.com/cart.zip
+        dest: /app
+        remote_src: yes
+
+    - name : download maven dependiences
+      ansible.builtin.shell : mvn clean package ; mv target/shipping-1.0.jar shipping.jar
+
+    - name : install mysql server
+      ansible.builtin.yum :
+        name : mysql
+        state : installed
+
+    - name : load schema
+      ansible.builtin.shell : mysql -h mqsql-dev.sdevops28.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
+
+    - name : start server
+      ansible.builtin.systemd :
+        name : shipping
+        state : restarted
+        enabled : yes
