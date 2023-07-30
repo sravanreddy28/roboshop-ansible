@@ -35,8 +35,8 @@
       args :
         chdir : /app
 
-    -  name : system file
-       ansible.buitlin.copy :
+    -  name : copy system file
+       ansible.builtin.copy :
          src : shipping.service
          dest : /etc/systemd/system/payment.service
 
