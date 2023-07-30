@@ -1,4 +1,4 @@
-- name: roboshop project - mysql
+- name: mysql setup
   hosts: all
   become: true
   tasks:
@@ -12,12 +12,12 @@
 
     - name : install msql community server
       ansible.builtin.yum :
-        - name : mysql
+          name : mysql
           state : installed
 
     - name : start mysql
       ansible.builtin.systemd :
-        - name : mysql
+          name : mysql
           state : restarted
           enabled : yes
 
