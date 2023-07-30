@@ -3,10 +3,10 @@
   become: true
   tasks:
     - name: vendor repo
-      ansible.yum.shell: https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
+      ansible.builtin.shell: https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
 
     - name: rabbit mq repo
-      ansible.yum.shell: https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
+      ansible.built.shell: https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
 
     - name: install rabbitmq-server
       ansible.builtin.yum:
