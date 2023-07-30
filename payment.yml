@@ -1,0 +1,52 @@
+- name: roboshop project - rabbitmq
+  hosts: all
+  become: true
+  tasks:
+    - name : install python
+      ansible.builtin.yum :
+        name :
+          - python36
+          - gcc
+          - python3-devel
+        state : installed
+
+    - name : add user
+      ansible.builtin.user :
+        name : roboshop
+
+    - name : remove directory
+      ansible.builtin.file :
+        path : /app
+        state : absent
+
+    - name : create directory
+      ansible.builtin.file :
+        path : /app
+        state : directory
+
+    - name : unarchive
+      ansible.builtin.unarchive :
+        src : https://roboshop-artifacts.s3.amazonaws.com/payment.zip
+        dest : /app
+        remote_src : yes
+
+    - name : download dependencies
+      ansible.builtin.shell : pip3.6 install -r requirements.txt
+      args :
+        chdir : /app
+
+    -  name : system file
+       ansible.buitlin.copy :
+         src : shipping.service
+         dest : /etc/systemd/system/payment.service
+
+    - name : restart service
+      ansible.builtin.systemd :
+        name : payment
+        state : restarted
+        enabled : yes
+        daemon-reload : yes
+
+
+
+
