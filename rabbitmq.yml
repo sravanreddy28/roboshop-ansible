@@ -8,7 +8,7 @@
     - name: rabbit mq repo
       ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
 
-    - name: install rabbitmqserver
+    - name: install rabbitmq server
       ansible.builtin.yum:
         name: rabbitmq-server
         state: installed
@@ -21,7 +21,7 @@
 
     - name: add user
       ansible.builtin.rabbitmq_user:
-        name: roboshop
+        user: roboshop
         password: roboshop123
         vhost: /
         configure_priv: .*
