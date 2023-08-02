@@ -1,9 +1,0 @@
-- name: roboshop project - catalogue
-  hosts: all
-  become: true
-  vars :
-    component : catalogue
-  tasks:
-
-    - name : nodejs
-      ansible.builtin.import_tasks : nodejs.yml
