@@ -3,3 +3,11 @@
   become: true
   roles:
     - "{{component_name}}"
+    - "cart"
+    - "mongodb"
+    - "mysql"
+    - "frontend"
+    - "payment"
+    - "shipping"
+    - "rabbitmq"
+    - "redis"
