@@ -2,7 +2,7 @@
   hosts: all
   become: true
   roles:
-    - "{{component_name}}"
+    - "catalogue"
     - "cart"
     - "mongodb"
     - "mysql"
@@ -11,3 +11,4 @@
     - "shipping"
     - "rabbitmq"
     - "redis"
+    - "user"
