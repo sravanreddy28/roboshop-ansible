@@ -2,13 +2,13 @@
   hosts: all
   become: true
   roles:
-    - "catalogue"
-    - "cart"
-    - "mongodb"
-    - "mysql"
-    - "frontend"
-    - "payment"
-    - "shipping"
-    - "rabbitmq"
-    - "redis"
-    - "user"
+    -  catalogue 
+    -  cart 
+    -  mongodb 
+    -  mysql 
+    -  frontend 
+    -  payment 
+    -  shipping 
+    -  rabbitmq 
+    -  redis 
+    -  user 
